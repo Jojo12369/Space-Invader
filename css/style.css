@@ -1,0 +1,76 @@
+body {
+    color: white;
+    font-family: "Press Start 2P", system-ui;
+    background: url(../assets/seamless-space.png);
+
+    /* Applique l'animation de défilement de fond */
+    animation: background-animation 10s linear infinite;
+}
+
+/* Définition de l'animation pour faire défiler l'image de fond */
+@keyframes background-animation {
+    /* À 0% du temps, l'image de fond est en position initiale (haut) */
+    0% {
+        background-position-y: 0;
+    }
+
+    /* À 100% du temps, l'image de fond a défilé vers le bas */
+    100% {
+        background-position-y: 1024px;
+    }
+}
+
+button {
+    /* Attibu la police "Press Start 2P" aux buttons */
+    font-family: "Press Start 2P", system-ui;
+}
+
+#img-container {
+    margin-top: 100px;
+
+    /* Permet de centrer l'élément horizontalement sur la page */
+    display: flex;
+    justify-content: center;
+}
+
+h1, #button-container {
+    margin-top: 70px;
+    display: flex;
+    justify-content: center;
+}
+
+h1 span {
+    margin-left: 20px
+}
+
+button {
+    font-size: 25px;
+    font-weight: bold;
+
+    color: gray;
+
+    /* Change le fond du bouton */
+    background-color: lightgray;
+
+    border: solid 2px;
+    border-color: rgb(71, 71, 71) black black rgb(71, 71, 71);
+    border-radius: 6px;
+
+    padding: 10px;
+
+    /* Met le décalage à 0, l'ombre à 5px et le flou à 0 */
+    box-shadow: 0 5px 0 gray;
+
+    /* Ajoute 2 ombres sur le texte */
+    text-shadow: -1px -1px 0 black, 1px 1px 0 white;
+
+    /* Change le curseur quand il passe au dessus du button */
+    cursor: pointer;
+}
+
+button:active {
+    background-color: rgb(160, 160, 160);
+    margin-top: 5px;
+    box-shadow: none;
+    border-color: black rgb(71, 71, 71) rgb(71, 71, 71) black;
+}
