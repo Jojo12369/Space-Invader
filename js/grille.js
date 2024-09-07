@@ -16,7 +16,6 @@ export function grid() {
             ennemies.classList.add("ennemies")
         } 
     }
-
     let joueur = document.getElementById("div-11-20")
 
     joueur.classList.add("joueur")
