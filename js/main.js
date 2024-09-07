@@ -1,5 +1,6 @@
 import { grid } from "./grille.js"
 import { ennemies } from "./ennemies.js"
+import { deplacement } from "./joueur.js"
 
 let boutonStart = document.getElementById("start")
 
@@ -19,4 +20,6 @@ boutonStart.addEventListener("click", () => {
     setInterval(() => {
         ennemies() // Appelle la fonction ennemies toutes les 500 ms
     }, 500)
+
+    deplacement()
 })
