@@ -1,3 +1,5 @@
+import { grid } from "./grille.js"
+
 let boutonStart = document.getElementById("start")
 
 boutonStart.addEventListener("click", () => {
@@ -12,7 +14,9 @@ boutonStart.addEventListener("click", () => {
     highScore.style.display = "none"
 
     score.style.display = "flex"
-    grille.style.display = "block"
+    grille.style = "display: flex; flex-wrap: wrap;"
+
+    grid()
 })
 
 
@@ -20,8 +24,6 @@ boutonStart.addEventListener("click", () => {
 ////////////////
 // Code Chat GPT
 ////////////////
-
-
 
 // let boutonStart = document.getElementById("start");
 

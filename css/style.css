@@ -86,5 +86,21 @@ h2 {
     width: 500px;
     height: 500px;
     border: solid 2px white;
-    margin: auto
+    margin: auto;
+}
+
+#grille div {
+    width: 25px;
+    height: 25px;
+}
+
+.ennemies {
+    background: url(../assets/ennemies.png);
+    background-size: cover;
+}
+
+.joueur {
+    background: url(../assets/joueur.png);
+    background-size: contain;
+    transform: rotate(180deg)
 }
