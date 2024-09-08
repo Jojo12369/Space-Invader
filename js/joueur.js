@@ -1,8 +1,28 @@
+import { recursive } from "./bullet.js";
+
 let x = 11
 let y = 20
 
+let cooldown = false // Cooldown général
+const cooldownTime = 500
+const delay = 50
+
 export function deplacement() {
     document.addEventListener("keydown", (event) => {
+        if (event.key == " ") {
+            
+            if (cooldown) return
+            
+            const tir = x
+            recursive(1, tir, y, delay)
+
+            cooldown = true;
+
+            // Désactive le cooldown après un délai (cooldownTime)
+            setTimeout(() => {
+                cooldown = false
+            }, cooldownTime)
+        }
 
         const touche = {
             "z": { dx: 0, dy: -1}, // Haut

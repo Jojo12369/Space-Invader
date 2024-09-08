@@ -104,3 +104,8 @@ h2 {
     background-size: contain;
     transform: rotate(180deg)
 }
+
+.lazer {
+    background: url(../assets/lazer.png);
+    background-size: contain;
+}
