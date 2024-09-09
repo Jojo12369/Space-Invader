@@ -9,7 +9,7 @@ function jeu() {
     let boutonStart = document.getElementById("start")
 
     boutonStart.addEventListener("click", () => {
-        const elementsToHide = [boutonStart, document.getElementById("logo"), document.querySelector("h1")]
+        const elementsToHide = [boutonStart, document.getElementById("logo")]
 
         let score = document.querySelector("h2")
         let grille = document.getElementById("grille")
