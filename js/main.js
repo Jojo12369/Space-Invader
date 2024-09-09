@@ -1,25 +1,69 @@
 import { grid } from "./grille.js"
 import { ennemies } from "./ennemies.js"
 import { deplacement } from "./joueur.js"
+import { lazerEnnemies } from "./lazer-ennemies.js"
 
-let boutonStart = document.getElementById("start")
+let fine = 0
 
-boutonStart.addEventListener("click", () => {
-    const elementsToHide = [boutonStart, document.getElementById("logo"), document.querySelector("h1")]
+function jeu() {
+    let boutonStart = document.getElementById("start")
 
-    let score = document.querySelector("h2")
-    let grille = document.getElementById("grille")
+    boutonStart.addEventListener("click", () => {
+        const elementsToHide = [boutonStart, document.getElementById("logo"), document.querySelector("h1")]
 
-    elementsToHide.forEach(el => el.style.display = "none")
+        let score = document.querySelector("h2")
+        let grille = document.getElementById("grille")
 
-    score.style.display = "flex"
-    grille.style = "display: flex; flex-wrap: wrap;"
+        elementsToHide.forEach(el => el.style.display = "none")
 
-    grid()
+        score.style.display = "flex"
+        grille.style = "display: flex; flex-wrap: wrap;"
 
-    setInterval(() => {
-        ennemies() // Appelle la fonction ennemies toutes les 500 ms
-    }, 500)
+        grid()
 
-    deplacement()
-})
+        setInterval(() => {
+            ennemies() // Appelle la fonction ennemies toutes les 500 ms
+        }, 300)
+
+        deplacement()
+
+        setInterval(() => {
+            lazerEnnemies()
+        }, 1000)
+
+        setInterval(() => {
+            if (fine == 0) {
+                fin()
+            }
+        }, 1)
+    })
+}
+
+function fin() {
+    let listeCase = []
+    for (let a = 1; a <= 20; a++) {
+        for (let b = 1; b <= 20; b++) {
+            let alien = document.getElementById(`div-${a}-${b}`)
+            if (alien.classList.contains("ennemies")) {
+                listeCase.push([a, b])
+
+                if (alien.classList.contains("joueur")) {
+                    console.log("hey gros ")
+                    alien.classList.remove("joueur")
+                    let gameOver = document.getElementById("game-over")
+                    gameOver.style.display = "block"
+                    fine++
+                    return
+                }
+            }
+            
+        }
+    }
+    if (listeCase.length == 0) {
+        let win = document.getElementById("win")
+        win.style.display = "block"
+        return
+    }
+}
+
+jeu()

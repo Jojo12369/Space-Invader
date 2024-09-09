@@ -3,41 +3,43 @@ let gauche = 0
 let droite = 0
 
 export function ennemies() {
+    let listeCase = []
+    for (let a = 1; a <= 20; a++) {
+        for (let b = 1; b <= 20; b++) {
+            let joueur = document.getElementById(`div-${a}-${b}`)
+            if (joueur.classList.contains("joueur")) {
+                listeCase.push([a, b])
+            }
+        }
+    }
+    if (listeCase.length == 0) {
+        let gameOver = document.getElementById("game-over")
+        gameOver.style.display = "block"
+        return
+    }
+
     let listeEnnemies = liste()
 
     for (let z = 0; z < listeEnnemies.length; z++) {
         let liste = listeEnnemies[z]
 
-        if (liste[1] == 20) {
-            console.log("Game Over")
+        // Gestion du game over
+        if (liste[1] == 20) { 
+            let gameOver = document.getElementById("game-over")
+            gameOver.style.display = "block"
+            return
         }
 
         if (liste[0] == 1 && gauche == 0) {
             coté = 1
-            for (let z = listeEnnemies.length - 1; z >= 0; z--) {
-                let [x, y] = listeEnnemies[z]
-        
-                let currentDiv = document.getElementById(`div-${x}-${y}`)
-                currentDiv.classList.remove("ennemies")
-        
-                let newDiv = document.getElementById(`div-${x}-${y + 1}`)
-                newDiv.classList.add("ennemies")
-            }
+            decalag(listeEnnemies)
             gauche = 1
             return
         }
 
         if (liste[0] == 20 && droite == 0) {
             coté = 0
-            for (let z = listeEnnemies.length - 1; z >= 0; z--) {
-                let [x, y] = listeEnnemies[z]
-        
-                let currentDiv = document.getElementById(`div-${x}-${y}`)
-                currentDiv.classList.remove("ennemies")
-        
-                let newDiv = document.getElementById(`div-${x}-${y + 1}`)
-                newDiv.classList.add("ennemies")
-            }
+            decalag(listeEnnemies)
             droite = 1
             return
         }
@@ -65,7 +67,7 @@ export function ennemies() {
     droite = 0
 }
 
-function liste() {
+export function liste() {
     let listeEnnemies = []
 
     for (let j = 1; j <= 20; j++) {
@@ -79,4 +81,16 @@ function liste() {
         } 
     }
     return listeEnnemies
+}
+
+function decalag(listeEnnemies) {
+    for (let z = listeEnnemies.length - 1; z >= 0; z--) {
+        let [x, y] = listeEnnemies[z]
+
+        let currentDiv = document.getElementById(`div-${x}-${y}`)
+        currentDiv.classList.remove("ennemies")
+
+        let newDiv = document.getElementById(`div-${x}-${y + 1}`)
+        newDiv.classList.add("ennemies")
+    }
 }
